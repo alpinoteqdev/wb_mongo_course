@@ -1,7 +1,7 @@
 Я с помощью LLM создал скрипт, который создает 100 документов, у которых как минимум 20 полей - строк. 
 Пример документа:
 
-```json
+```javascript
 {
   _id: ObjectId('68f4e2400256dc10e580d7d9'),
   productId: 'PROD-1001',
@@ -61,7 +61,7 @@
 db.products.explain('executionStats').find({qualityGrade: 'Standard'})
 ```
 
-```json
+```javascript
  executionStats: {
     executionSuccess: true,
     nReturned: 26,
@@ -116,7 +116,7 @@ db.products.explain("executionStats").find({$text: {$search: "Organic"}})
 ```
 
 explain (только часть вывода):
-```json
+```javascript
 winningPlan: {
       isCached: false,
       stage: 'TEXT_MATCH',
@@ -155,7 +155,7 @@ test> db.products.totalIndexSize()/(1024*1024)
 
 Индекс занимает 70% от всей коллекции, что довольно дорого. Конечно, у нас в докуметтах 20 полей и из-за этого требуется много места. 
 
-Я пересоздал коллекцию, где уменьшил количество ключей, которых значение - строка и проверил размер:
+Я пересоздал коллекцию, где уменьшил количество ключей, которых значение - строка c 20 до 7 и проверил размер:
 ```javascript
 test> db.products.totalSize()/(1024*1024)
 0.1796875
