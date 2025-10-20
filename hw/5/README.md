@@ -259,12 +259,14 @@ CMD []
 
 Я запустил на двух конфигурациях
 1 cpu 4gb ram - узнать как монго отработает на минимальном конфиге
+
 Команда запуска
 ```bash
 python3 benchrun.py -f testcases/simple_commands.js testcases/simple_in_queries.js testcases/simple_multi_update.js testcases/simple_sort_queries.js testcases/simple_insert.js testcases/simple_query.js -t 1 --includeFilter insert update -u admin -p secret --host 10.0.20.1 --trialTime 5
 ```
 
 4 cpu 8gb ram - узнать как монго отработает на более-менее конфиге
+
 Команда запуска
 ```bash
 python3 benchrun.py -f testcases/simple_commands.js testcases/simple_in_queries.js testcases/simple_multi_update.js testcases/simple_sort_queries.js testcases/simple_insert.js testcases/simple_query.js -t 1 --includeFilter insert update -u admin -p secret --host 10.0.20.1 --trialTime 5
