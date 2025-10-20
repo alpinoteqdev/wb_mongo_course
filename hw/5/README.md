@@ -2,8 +2,9 @@
 
 ## Настройка аутентификации
 
-Просто открыл доку монги и проследовал по шагам:
+Просто открыл доку монги и проследовал по шагам.
 
+Зашел в mongosh и создал пользователя админа:
 ```js
 db.createUser({user:"admin", pwd:"secret", roles:[{role: "userAdminAnyDatabase", db:"admin"}, {role:"clusterAdmin", db:"admin"}, {role:"readWriteAnyDatabase", db:"admin"}, {role:"dbAdminAnyDatabase", db:"admin"}]})
 ```
@@ -39,12 +40,14 @@ auditLog:
 sudo systemctl restart mongod
 ```
 
-
 ## Проверяем работу аутентификации + проверка с import/export
 
-Создадим пользователя в БД `premier-league`:
+Создадим пользователя в БД `premier-league` (зашел как админ):
+
 ```js
-db.createUser({ user: "pirogov", pwd: "pirogov!", roles: [ { role: "readWrite", db: "premier-league" } ] })
+admin> use premier-league
+switched to db premier-league
+premier-league> db.createUser({ user: "pirogov", pwd: "pirogov!", roles: [ { role: "readWrite", db: "premier-league" } ] })
 ```
 
 Попробуем зайти без корректных кредов
