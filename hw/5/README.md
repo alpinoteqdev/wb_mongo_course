@@ -45,6 +45,22 @@ sudo systemctl restart mongod
 Создадим пользователя в БД `premier-league` (зашел как админ):
 
 ```js
+root@dev-mongo-0:~#  mongosh admin -u admin -p secret --authenticationDatabase=admin --host 10.0.20.1
+Current Mongosh Log ID:	68f622a5d52c0c0fe980d710
+Connecting to:		mongodb://<credentials>@10.0.20.1:27017/admin?directConnection=true&authSource=admin&appName=mongosh+2.5.6
+Using MongoDB:		8.0.12-4
+Using Mongosh:		2.5.6
+mongosh 2.5.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-10-20T07:18:32.017-04:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2025-10-20T07:18:33.050-04:00: vm.max_map_count is too low
+   2025-10-20T07:18:33.050-04:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
 admin> use premier-league
 switched to db premier-league
 premier-league> db.createUser({ user: "pirogov", pwd: "pirogov!", roles: [ { role: "readWrite", db: "premier-league" } ] })
